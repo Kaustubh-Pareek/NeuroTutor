@@ -1,0 +1,122 @@
+<!-- templates/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - NeuroTutor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #2c3e50;
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(rgba(59, 59, 152, 0.7), rgba(59, 59, 152, 0.7)),
+                  url("{{ url_for('static', filename='neuro-bg.jpg') }}") no-repeat center center;
+      background-size: cover;
+      z-index: -1;
+      opacity: 1; 
+    }
+
+    .neuro-header {
+        text-align: center;
+        padding-top: 60px;
+        padding-bottom: 20px;
+        color: white;
+    }
+
+    .neuro-header h1 {
+        font-size: 3.5rem; 
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+
+    .neuro-header p {
+        font-size: 1.4rem; 
+        font-weight: 300;
+        color: #e0e0ff;
+        margin: 0;
+    }
+
+.auth-container {
+    max-width: 400px;
+    background: white;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-container h2 {
+    color: #3b3b98;
+    margin-bottom: 20px;
+}
+
+
+.auth-container input[type="text"],
+.auth-container input[type="email"],
+.auth-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-left: 0;      
+    display: block;
+}
+
+.auth-container button {
+    width: 100%;
+    max-width: 320px;
+    padding: 12px;
+    background-color: #3b3b98;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.auth-container button:hover {
+    background-color: #2d2d7a;
+}
+
+</style>
+
+</head>
+<body>
+    <div class="neuro-header">
+        <h1>NeuroTutor</h1>
+        <p>Your AI Based Study Guide</p>
+    </div>
+    <div class="auth-container">
+        <h2>Login</h2>
+        <form method="POST">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p style="text-align:center; margin-top:10px;">Don't have an account? <a href="/signup">Sign Up</a></p>
+    </div>
+</body>
+</html>
