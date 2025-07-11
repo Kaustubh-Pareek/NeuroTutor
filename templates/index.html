@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NeuroTutor - Personalized Study Guide</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .user-info {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 60px 20px 30px;
+      background: linear-gradient(rgba(59, 59, 152, 0.88), rgba(59, 59, 152, 0.88)),
+                  url("{{ url_for('static', filename='neuro-bg.jpg') }}") no-repeat center center;
+      background-size: cover;
+      opacity: 1;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+ <header class="hero" style="position: relative;">
+  <div style="position: absolute; top: 20px; right: 60px; color: white; text-align: right;">
+    <p class="user-tag">User: {{ user.username }}</p>
+    <a href="/logout" class="logout-link">Logout</a>
+  </div>
+
+  
+  <div style="text-align: center; padding-top: 60px; padding-bottom: 20px;">
+    <h1>NeuroTutor</h1>
+    <p class="subtitle">Your AI Based Study Guide</p>
+  </div>
+</header>
+
+  <div class="container">
+    <form action="/generate" method="POST" enctype="multipart/form-data" id="studyForm">
+<div class="form-top">
+  <div class="input-toggle">
+    <label><input type="radio" name="input_method" value="text" id="textRadio"> Text Input</label>
+    <label><input type="radio" name="input_method" value="file" id="fileRadio" checked> File Upload</label>
+  </div>
+
+  <div class="difficulty-select">
+    <label for="level">Difficulty:</label>
+    <select name="difficulty" id="level">
+      <option value="easy">Easy</option>
+      <option value="medium" selected>Medium</option>
+      <option value="hard">Hard</option>
+    </select>
+  </div>
+</div>
+
+
+      <div id="textInputArea" class="hidden">
+        <textarea name="text_input" placeholder="Paste your notes or textbook content here..."></textarea>
+      </div>
+
+      <div id="fileInputArea">
+        <input type="file" name="file" accept=".txt,.pdf">
+      </div>
+
+      <button type="submit">Generate Study Guide</button>
+    </form>
+  </div>
+
+
+  <div class="loader-overlay" id="loader">
+    <div class="loader-wrapper">
+      <div class="loader"></div>
+      <p class="loader-text">Generating your study guide...</p>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+  <!-- for loader -->
+  <script>
+  const form = document.getElementById("studyForm");
+  const loader = document.getElementById("loader");
+
+  if (form && loader) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();  
+      loader.style.display = "flex";  
+
+      setTimeout(() => {
+        form.submit();  
+      }, 100);
+    });
+  }
+  </script>
+ </body>
+</html>

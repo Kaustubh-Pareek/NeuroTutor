@@ -2,10 +2,9 @@ import os
 from flask import Flask, render_template, request, redirect, make_response
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import (
-    JWTManager, create_access_token, jwt_required, get_jwt_identity, unset_jwt_cookies
+    JWTManager, create_access_token, unset_jwt_cookies
 )
 from dotenv import load_dotenv
-import google.generativeai as genai
 from pdf_exporter import export_to_pdf
 from word_exporter import export_to_word
 from summarizer import summarize
@@ -25,9 +24,9 @@ app.config['JWT_SECRET_KEY'] = os.getenv("JWT_SECRET_KEY")
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(minutes=1)
 
-app.config["JWT_TOKEN_LOCATION"] = ["cookies"]
+app.config["JWT_TOKEN_LOCATION"] = ["cookies"]# this tell that look in browser cookies for JWT
 app.config["JWT_ACCESS_COOKIE_NAME"] = "access_token"
-app.config["JWT_COOKIE_SECURE"] = False 
+app.config["JWT_COOKIE_SECURE"] = False # means the cookie can be sent over plain HTTP not only HTTPS
 
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -106,7 +105,7 @@ def require_auth():
 
 
 @app.route("/")
-def index():
+def home():
     user = require_auth()
     if not user:
         return redirect("/login")
@@ -115,10 +114,10 @@ def index():
 
 @app.route("/generate", methods=["POST"])
 def generate():
-#checking user identity again
+# checking user identity again
 # Because every route in your Flask app is a separate request from the browser.
-#HTTP is stateless, which means:server doesn’t “remember” the previous page.
-# #It needs to re-check the authentication on every request.
+# HTTP is stateless, which means:server doesn’t remember the previous page.
+# It needs to re-check the authentication on every request.
     user = require_auth()
     if not user:
         return redirect("/login")                
@@ -151,4 +150,20 @@ def generate():
         concepts=concepts,
         difficulty=difficulty
     )
+
+
+@app.route("/exportpdf", methods=["POST"])
+def pdf_export():
+    return export_to_pdf(request.form)
+
+
+@app.route("/logout")
+def logout():
+    resp = make_response(redirect("/login"))
+    unset_jwt_cookies(resp)
+    return resp
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
 
