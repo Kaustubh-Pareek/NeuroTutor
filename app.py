@@ -148,6 +148,11 @@ def generate():
 def pdf_export():
     return export_to_pdf(request.form)
 
+@app.route("/export/word", methods=["POST"])
+def export_word():
+    return export_to_word(request.form)
+
+
 
 @app.route("/logout")
 def logout():
