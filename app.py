@@ -15,6 +15,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import timedelta
 from flask_jwt_extended import set_access_cookies
 from flask_jwt_extended import decode_token
+from models import db, User
 
 load_dotenv()
 
@@ -31,17 +32,8 @@ app.config["JWT_COOKIE_SECURE"] = False # means the cookie can be sent over plai
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-db = SQLAlchemy(app)
+db.init_app(app)
 jwt = JWTManager(app)
-
-
-
-# user table
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(120), nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(200), nullable=False)
 
 
 @app.route("/signup", methods=["GET", "POST"])

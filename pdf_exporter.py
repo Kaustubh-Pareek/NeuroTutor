@@ -1,4 +1,3 @@
-# pdf_exporter.py
 from fpdf import FPDF
 from flask import send_file
 import io
