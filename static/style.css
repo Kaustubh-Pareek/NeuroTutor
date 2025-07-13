@@ -194,3 +194,102 @@ button[type="submit"]:hover {
     font-weight: bold;
     transition: border-color 0.3s;
 }
+
+.tab-button.active {
+    border-color: #3b3b98;
+    color: #3b3b98;
+}
+
+.tab-content {
+    display: none;
+    padding-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #fefefe;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+        padding: 25px;
+    }
+
+    header.hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .form-top {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(248, 249, 251, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    display: none;
+}
+
+.loader {
+    border: 6px solid #e0e5fb;
+    border-top: 6px solid #3b3b98;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+.loader-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.loader-text {
+    font-weight: 500;
+    color: #3b3b98;
+    font-size: 1.1rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.auth-page {
+    min-height: 100vh;
+    background: #3b3b98 url('../static/neuro-bg.png') no-repeat center top;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.auth-header {
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+}

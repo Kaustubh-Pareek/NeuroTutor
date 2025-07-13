@@ -10,7 +10,7 @@ from word_exporter import export_to_word
 from summarizer import summarize
 from question_generator import generate_questions
 from key_concepts import generate_concepts
-from utils import extract_text_from_file
+from utils import extract_text
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import timedelta
 from flask_jwt_extended import set_access_cookies
@@ -125,7 +125,7 @@ def generate():
     elif input_method == "file" and file:
         filepath = os.path.join(UPLOAD_FOLDER, file.filename)
         file.save(filepath)
-        content = extract_text_from_file(filepath)
+        content = extract_text(filepath)
         filename = file.filename
     else:
         return "No file or text provided.", 400
