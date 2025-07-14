@@ -293,3 +293,142 @@ button[type="submit"]:hover {
     text-align: center;
     margin-bottom: 30px;
 }
+
+
+.auth-header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.auth-header p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #dcdcf6;
+}
+
+.auth-card {
+    background-color: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.auth-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #3b3b98;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.auth-card button {
+    width: 100%;
+    background-color: #3b3b98;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.auth-card button:hover {
+    background-color: #2d2d7a;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.logout-link {
+  background-color: white;
+  color: #3b3b98;
+  border: none;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  border-radius: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin-left: 10px; 
+}
+
+
+.logout-link:hover {
+  background-color: red;
+  color: white;
+}
+
+.user-tag {
+  background-color: white;
+  color: #3b3b98;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 0.9rem;
+  margin-right: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.select-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.select-wrapper label {
+  font-weight: 500;
+  color: #333;
+}
+
+
+#level {
+  background-color: white;
+  color: #3b3b98;
+  border: 2px solid #3b3b98;
+  border-radius: 15px;
+  padding: 8px 14px;
+  font-size: 1rem;
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+ 
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%233b3b98' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px; 
+}
+
+
+#level:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 59, 152, 0.2);
+}
+
+
+#level option {
+  background-color: white;
+  color: #3b3b98;
+}

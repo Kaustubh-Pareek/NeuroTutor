@@ -23,7 +23,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 app.config['JWT_SECRET_KEY'] = os.getenv("JWT_SECRET_KEY")
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
-app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(minutes=1)
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=24)
 
 app.config["JWT_TOKEN_LOCATION"] = ["cookies"]# this tell that look in browser cookies for JWT
 app.config["JWT_ACCESS_COOKIE_NAME"] = "access_token"
@@ -48,7 +48,7 @@ def signup():
         if User.query.filter_by(email=email).first():
             return "Email already exists.", 409
 
-        new_user = User(username=username, email=email, hashed_pw=hashed_pw)
+        new_user = User(username=username, email=email, password_hash=hashed_pw)
         db.session.add(new_user)
         db.session.commit()
 

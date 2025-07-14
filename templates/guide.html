@@ -1,0 +1,61 @@
+<!-- templates/guide.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Guide - NeuroTutor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="hero">
+    <h1>NeuroTutor</h1>
+    <p class="subtitle">Your AI Based Study Guide</p>
+  </header>
+
+  <div class="container ">
+    <a href="/" class="back-btn">⬅ Back</a>
+
+    <h2>Study Guide for: <strong>{{ filename }}</strong></h2>
+
+    <div class="output-tabs">
+      <button class="tab-button active" data-tab="summary">Summary</button>
+      <button class="tab-button" data-tab="concepts">Key Concepts</button>
+      <button class="tab-button" data-tab="questions">Practice Questions</button>
+    </div>
+
+    <div id="summary" class="tab-content active">
+      <h3>🍍 Summary</h3>
+      <p>{{ summary.replace('\n', '<br>')|safe }}</p>
+    </div>
+
+    <div id="concepts" class="tab-content">
+      <h3>📖 Key Concepts</h3>
+      <p>{{ concepts.replace('\n', '<br>')|safe }}</p>
+    </div>
+
+    <div id="questions" class="tab-content">
+      <h3>❓ Practice Questions</h3>
+      <p>{{ questions.replace('\n', '<br>')|safe }}</p>
+    </div>
+
+    <form method="POST" action="/export/pdf">
+      <textarea name="summary" hidden>{{ summary }}</textarea>
+      <textarea name="questions" hidden>{{ questions }}</textarea>
+      <textarea name="concepts" hidden>{{ concepts }}</textarea>
+      <input type="hidden" name="filename" value="{{ filename }}">
+      <button type="submit">Export to PDF</button>
+    </form>
+
+    <form method="POST" action="/export/word">
+      <textarea name="summary" hidden>{{ summary }}</textarea>
+      <textarea name="questions" hidden>{{ questions }}</textarea>
+      <textarea name="concepts" hidden>{{ concepts }}</textarea>
+      <input type="hidden" name="filename" value="{{ filename }}">
+      <button type="submit">Export to Word</button>
+    </form>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
