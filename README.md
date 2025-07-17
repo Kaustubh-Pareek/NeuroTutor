@@ -1,6 +1,6 @@
 # NeuroTutor — Personalized AI Study Guide Generator
 
-NeuroTutor is an AI-powered web application that generates tailored study guides based on uploaded **PDFs or text files on any topic**. It uses the Gemini 1.5 Pro model to extract key topics, summaries, and potential questions, making learning and revision faster and more effective.
+NeuroTutor is an AI-powered web application that generates tailored study guides based on uploaded **PDFs or text input on any topic**. It uses the Google’s Gemini 2.0 Flash Lite model to extract key topics, summaries, and potential questions, making learning and revision faster and more effective.
 
 ---
 
@@ -18,6 +18,7 @@ NeuroTutor is an AI-powered web application that generates tailored study guides
 
 - 📄 Upload study materials (PDFs or text)
 - 🧠 Automatically generates concise study guides
+- 🎯 Choose difficulty level: Easy, Medium, or Hard
 - 💡 Extracts key topics, summarizes the content and generates potential questions
 - 📥 Download the generated study guide as PDF or Word document
 - 🔒 JWT-based authentication with secure cookie storage
