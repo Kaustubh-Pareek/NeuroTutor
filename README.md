@@ -1,4 +1,4 @@
-# 🧠 NeuroTutor — Personalized AI Study Guide Generator
+# NeuroTutor — Personalized AI Study Guide Generator
 
 NeuroTutor is an AI-powered web application that generates tailored study guides based on uploaded **PDFs or text files on any topic**. It uses the Gemini 1.5 Pro model to extract key topics, summaries, and potential questions, making learning and revision faster and more effective.
 
@@ -18,7 +18,8 @@ NeuroTutor is an AI-powered web application that generates tailored study guides
 
 - 📄 Upload study materials (PDFs or text)
 - 🧠 Automatically generates concise study guides
-- 💡 Extracts key topics and potential questions
+- 💡 Extracts key topics, summarizes the content and generates potential questions
+- 📥 Download the generated study guide as PDF or Word document
 - 🔒 JWT-based authentication with secure cookie storage
 - 🌐 Fully responsive and modern UI
 
@@ -45,10 +46,13 @@ cd neurotutor
 ```
 2️⃣ Set up a Virtual Environment
 ```bash
+# Create virtual env
 python -m venv venv
-# On Unix or Mac
+
+# Activate on Unix or Mac
 source venv/bin/activate
-# On Windows
+
+# Activate on Windows
 venv\Scripts\activate
 ```
 3️⃣ Install Dependencies
@@ -56,7 +60,6 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 4️⃣ Set Up Environment Variables
-Create a .env file in the root directory:
 ```bash
 GEMINI_API_KEY=your_gemini_api_key
 SECRET_KEY=your_flask_secret
