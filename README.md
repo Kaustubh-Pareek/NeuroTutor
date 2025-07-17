@@ -31,7 +31,7 @@ NeuroTutor is an AI-powered web application that generates tailored study guides
 - **Frontend:** HTML, CSS, JavaScript
 - **Backend:** Python (Flask)
 - **Database:** PostgreSQL (via SQLAlchemy)
-- **AI Model:** Google Gemini 1.5 Pro (via API)
+- **AI Model:** Google Gemini 2.0 Flash Lite (via API)
 - **Deployment:** Render
 - **Authentication:** JWT with Flask-JWT-Extended
 
